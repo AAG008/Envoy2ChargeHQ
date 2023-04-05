@@ -16,3 +16,4 @@ Negative net_import = exporting
 
 
 6/04/23 Value are reporting incorrectly. Investgating cause. 
+#update# Wrong value being pulled from the Json file. Corrected it to PV. had to divide the value by 3 extra 0's as the decssmial point is not in this version of the API Call. 
