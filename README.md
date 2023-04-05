@@ -17,3 +17,19 @@ Negative net_import = exporting
 
 6/04/23 Value are reporting incorrectly. Investgating cause. 
 #update# Wrong value being pulled from the Json file. Corrected it to PV. had to divide the value by 3 extra 0's as the decssmial point is not in this version of the API Call. 
+
+  Recommended running on a linux system  that is on during daylight hours. Make sure that Python3 or higher is installed.
+  
+  Steps for usage. 
+  
+  1.Populate your details in the generatetoken.py. 
+  2.Run genrate that token Copy that token down
+  3.Populate all details in the config.py
+  4. Manually run the chargehq.py to ensure that all script runs correctly without error. 
+  5. Place script in crontab to run every minute.
+  
+  Possible issues! 
+  Because the web service is presenting a self signed certficate, it may present an error.
+    You can install the certficate by grabing it from the web page and importing this cert into the python trusted store. 
+    You can disable SSL verfication in python
+    You can add a host entry to match the SSL cert's CN. 
