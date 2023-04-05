@@ -2,7 +2,7 @@
 
 Based of pgroom / ChargeHQ Git. Modfications required for newer envoy systems. 
 
-Python script first generates a session ID with the bearer token. Then makes an API Call to grab curent data via a Json file and compiles it into a fomrat that Charge HQ can injest.
+Python script first generates a session ID with the bearer token. Then makes an API Call to grab curent data via a Json file and compiles it into a format that Charge HQ can injest.
 
 API called based on the Envoy documentation avaliable here: https://enphase.com/download/accessing-iq-gateway-local-apis-or-local-ui-token-based-authentication
 
