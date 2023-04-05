@@ -1,35 +1,26 @@
-# Envoy2ChargeHQ
+Envoy2chargehq
 
-Based of pgroom / ChargeHQ Git. Modfications required for newer envoy systems. 
+Based on pgroom/ChargeHQ Git, modifications are required for newer Envoy systems.
 
-Python script first generates a session ID with the bearer token. Then makes an API Call to grab curent data via a Json file and compiles it into a format that Charge HQ can injest.
+The Python script first generates a session ID with the bearer token. Then it makes an API call to grab current data via a JSON file and compiles it into a format that Charge HQ can ingest.
 
-API called based on the Envoy documentation avaliable here: https://enphase.com/download/accessing-iq-gateway-local-apis-or-local-ui-token-based-authentication
+The API call is based on the Envoy documentation available here: https://enphase.com/download/accessing-iq-gateway-local-apis-or-local-ui-token-based-authentication
 
-crontab to run every minute, 5AM to 10PM daily;  */1 5-21 * * * <path>/chargehq.py
+Crontab should be set to run every minute, 5 AM to 10 PM daily: */1 5-21 * * * /chargehq.py
 
-
-POST's the following json to ChargeHQ;
-{"apiKey": "not_telling", "siteMeters": {"production_kw": 0.00, "net_import_kw": 0.00, "consumption_kw": 0.00}}
+The following JSON is POSTed to ChargeHQ: {"apiKey": "not_telling", "siteMeters": {"production_kw": 0.00, "net_import_kw": 0.00, "consumption_kw": 0.00}}
 
 Negative net_import = exporting
 
+On 6/04/23, values were reporting incorrectly. Investigating cause. #update# Wrong value was being pulled from the JSON file. It was corrected to PV, and the value had to be divided by three extra zeros, as the decimal point is not in this version of the API call.
 
-6/04/23 Value are reporting incorrectly. Investgating cause. 
-#update# Wrong value being pulled from the Json file. Corrected it to PV. had to divide the value by 3 extra 0's as the decssmial point is not in this version of the API Call. 
+It is recommended to run the script on a Linux system that is on during daylight hours. Make sure that Python3 or higher is installed.
 
-  Recommended running on a linux system  that is on during daylight hours. Make sure that Python3 or higher is installed.
-  
-  Steps for usage. 
-  
-  1.Populate your details in the generatetoken.py. 
-  2.Run genrate that token Copy that token down
-  3.Populate all details in the config.py
-  4. Manually run the chargehq.py to ensure that all script runs correctly without error. 
-  5. Place script in crontab to run every minute.
-  
-  Possible issues! 
-  Because the web service is presenting a self signed certficate, it may present an error.
-    You can install the certficate by grabing it from the web page and importing this cert into the python trusted store. 
-    You can disable SSL verfication in python
-    You can add a host entry to match the SSL cert's CN. 
+Steps for usage:
+
+Populate your details in the generatetoken.py.
+Run generate that token. Copy that token down.
+Populate all details in the config.py.
+Manually run the chargehq.py to ensure that the script runs correctly without error.
+Place the script in crontab to run every minute.
+Possible issues: because the web service is presenting a self-signed certificate, it may present an error. You can install the certificate by grabbing it from the web page and importing this cert into the Python trusted store. You can disable SSL verification in Python. You can add a host entry to match the SSL cert's CN.
