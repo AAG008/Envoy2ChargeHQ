@@ -13,3 +13,6 @@ POST's the following json to ChargeHQ;
 {"apiKey": "not_telling", "siteMeters": {"production_kw": 0.00, "net_import_kw": 0.00, "consumption_kw": 0.00}}
 
 Negative net_import = exporting
+
+
+6/04/23 Value are reporting incorrectly. Investgating cause. 
