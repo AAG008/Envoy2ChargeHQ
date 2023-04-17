@@ -24,3 +24,5 @@ Populate all details in the config.py.
 Manually run the chargehq.py to ensure that the script runs correctly without error.
 Place the script in crontab to run every minute.
 Possible issues: because the web service is presenting a self-signed certificate, it may present an error. You can install the certificate by grabbing it from the web page and importing this cert into the Python trusted store. You can disable SSL verification in Python. You can add a host entry to match the SSL cert's CN.
+
+17/04/23, Minor updates to production URL and data called. Reverted back to the old URL, was getting inconsistant Data feed from the document API.
