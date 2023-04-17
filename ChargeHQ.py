@@ -53,8 +53,11 @@ except Exception as e:
 
 else:
     # Massage Envoy json into ChargeHQ compatible json
-    consumption = round(data['meters']['load']['agg_p_mw'] / 1000000, 2)
-    production = round(data['meters']['pv']['agg_p_mw'] / 1000000, 2)
+    # Reveted back to PGrooms settings, Documented API process was too inconsitant
+    #consumption = round(data['meters']['load']['agg_p_mw'] / 1000000, 2)
+    #production = round(data['meters']['pv']['agg_p_mw'] / 1000000, 2)
+    consumption = round(data['consumption'][0]['wNow'] / 1000,2)
+    production = round(data['production'][0]['wNow'] / 1000,2)
     grid = round(production - consumption, 2)
 
     if grid < 0:
